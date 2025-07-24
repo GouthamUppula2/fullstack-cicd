@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Billing Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/">
+</head>
+
+<body>
+    <h1>Manage Billing</h1>
+    <a href="/">🏠 Back to Home</a>
+    <h2>Create New Billing</h2>
+    <form action="/add_billing" method="POST">
+        <input type="text" name="patient_id" placeholder="Patient ID" required>
+        <input type="number" name="amount" placeholder="Billing Amount" required>
+        <button type="submit">Generate Bill</button>
+    </form>
+
+    <h2>Billing Records</h2>
+    <ul>
+        {% for bill in billings %}
+        <li>Patient ID: {{ bill.patient_id }}, Amount: {{ bill.amount }}
+            <a href="/delete_billing/{{ bill.id }}">Delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+<footer>
+
+    <p>&copy; 2025 Hospital Management System</p>
+</footer>
+
+</html>

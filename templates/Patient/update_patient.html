@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Update Patient</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        footer {
+            font-size: 0.8em;
+            color: #777;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Update Patient</h1>
+    <form action="{{ url_for('update_patient', id=patient.id) }}" method="POST">
+        <input type="text" name="name" value="{{ patient.name }}" required><br><br>
+        <input type="number" name="age" value="{{ patient.age }}" required><br><br>
+        <input type="text" name="gender" value="{{ patient.gender }}" required><br><br>
+        <input type="text" name="contact" value="{{ patient.contact }}" required><br><br>
+        <input type="text" name="address" value="{{ patient.address }}" required><br><br>
+        <button type="submit">Update Patient</button>
+    </form>
+    <br>
+    <a href="{{ url_for('list_patients') }}">Back to Patients List</a>
+</body>
+<footer>
+    <p>&copy; 2023 Hospital Management System</p>
+</footer>
+
+</html>

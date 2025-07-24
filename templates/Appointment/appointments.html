@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Appointments Management</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #2c3e50;
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        input[type="text"],
+        input[type="datetime-local"] {
+            padding: 10px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        a:hover {
+            color: #2980b9;
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <h1>Appointments</h1>
+    <a href="{{url_for('add_appointment')}}">New Appointment</a> |
+    <a href="/">Back to Home</a>
+    <h2>Appointments List</h2>
+    <ul>
+        {% for appointment in appointments %}
+        <li>Patient ID: {{ appointment.patient_id }}, Doctor ID: {{ appointment.doctor_id }},
+            Date: {{ appointment.appointment_date}} Time: {{
+            appointment.appointment_time }}
+            <a href="{{url_for(update_appointment)}}"></a>
+            <a href="/delete_appointment/{{ appointment.id }}">Cancel</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+<footer>
+    <p>&copy; 2025 Hospital Management System</p>
+</footer>
+
+
+</html>

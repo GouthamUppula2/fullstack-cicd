@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Add Appointment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            display: inline-block;
+            text-align: left;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2c80b4;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Add New Appointment</h1>
+    <form method="POST" action="{{url_for('add_appointment')}}">
+        <label for="patient_id">Patient:</label>
+        <select name="patient_id" id="patient_id" required>
+            {% for patient in patients %}
+            <option value="{{ patient.id }}">{{ patient.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="doctor_id">Doctor:</label>
+        <select name="doctor_id" id="doctor_id" required>
+            {% for doctor in doctors %}
+            <option value="{{ doctor.id }}">{{ doctor.name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="appointment_date">Appointment Date:</label>
+        <input type="date" name="appointment_date" id="appointment_date" required>
+
+        <label for="appointment_time">Appointment Time:</label>
+        <input type="time" name="appointment_time" id="appointment_time" required>
+
+        <button type="submit">Add Appointment</button>
+    </form>
+    <br><br>
+    <a href="/appointments">Back to Appointments</a> |
+    <a href="/">🏠 Home</a>
+</body>
+<footer>
+
+    <p>&copy; 2025 Hospital Management System</p>
+</footer>
+
+</html>

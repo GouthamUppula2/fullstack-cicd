@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Doctors Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            color: #333;
+
+
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        a {
+            text-decoration: none;
+            color: #3498db;
+        }
+
+        a:hover {
+            color: #2c80b4;
+        }
+
+        footer {
+
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Doctors</h1>
+    <a href="{{ url_for('add_doctor') }}">Add Doctor</a> |
+    <a href="/">🏠 Back to Home</a>
+
+    <h2>Doctors List</h2>
+    <table border="1" cellpadding="10">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Specialization</th>
+            <th>Contact</th>
+        </tr>
+        {% for doctor in doctors %}
+        <tr>
+            <td>{{ doctor.id }}</td>
+            <td>{{ doctor.name }}</td>
+            <td>{{ doctor.specialization }}</td>
+            <td>{{ doctor.contact }}</td>
+
+            <td><a href="{{ url_for('update_doctor', id=doctor.id) }}">Update</a> |
+                <a href="{{ url_for('delete_doctor', id=doctor.id) }}"
+                    onclick="return confirm('Are you sure you want to delete this patient?');">Delete</a></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+
+</html>
