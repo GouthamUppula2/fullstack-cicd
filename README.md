@@ -1,2 +1,2 @@
 # fullstack-cicd
-This is a fullstack web based application using GithHub Actions
+This is a fullstack web based application using Python and Flask
